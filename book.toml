@@ -12,7 +12,7 @@ line-numbers = true
 enable = true
 
 [output.html]
-git-repository-url = "https://github.com/rust-lang/rust-by-example"
+git-repository-url = "https://github.com/goodsw4all/rust-by-example-ko"
 
 [rust]
 edition = "2021"
