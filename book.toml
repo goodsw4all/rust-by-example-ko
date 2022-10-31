@@ -12,6 +12,9 @@ line-numbers = true
 enable = true
 
 [output.html]
+# default-theme = "dark"
+preferred-dark-theme = "navy"
+
 git-repository-url = "https://github.com/goodsw4all/rust-by-example-ko"
 
 [rust]
