@@ -1,4 +1,5 @@
-# Rust By Example
+# Rust By Example 
+한글로 번역합니다.
 
 [![Build Status][travis-badge]][travis-repo]
 
