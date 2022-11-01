@@ -4,20 +4,20 @@
 
 - [안녕 세상아](hello.md)
     - [주석](hello/comment.md)
-    - [서식화된 출력](hello/print.md)
+    - [서식있는 프린트](hello/print.md)
         - [Debug](hello/print/print_debug.md)
         - [Display](hello/print/print_display.md)
             - [Testcase: List](hello/print/print_display/testcase_list.md)
-        - [서식화<sup>Formatting</sup>](hello/print/fmt.md)
+        - [서식](hello/print/fmt.md)
 
-- [원시 자료형 <sup>Primitives</sup>](primitives.md)
-    - [리터럴 <sup>Literals</sup> 과 연산자](primitives/literals.md)
+- [원시 자료형](primitives.md)
+    - [리터럴과 연산자](primitives/literals.md)
     - [튜플](primitives/tuples.md)
     - [배열과 슬라이스](primitives/array.md)
 
 - [사용자 정의 자료형](custom_types.md)
     - [구조체](custom_types/structs.md)
-    - [열거형<sup>enum</sup>](custom_types/enum.md)
+    - [열거형](custom_types/enum.md)
         - [사용](custom_types/enum/enum_use.md)
         - [C-like](custom_types/enum/c_like.md)
         - [Testcase: linked-list](custom_types/enum/testcase_linked_list.md)
@@ -25,22 +25,22 @@
 
   - [변수 바인딩](variable_bindings.md)
     - [가변성](variable_bindings/mut.md)
-    - [스코프와 쉐도잉<sup>Shadowing</sup>](variable_bindings/scope.md)
+    - [스코프와 쉐도잉](variable_bindings/scope.md)
     - [선언 먼저 하기](variable_bindings/declare.md)
     - [얼어붙음<sup>Freezing</sup>](variable_bindings/freeze.md)
 
 - [타입](types.md)
     - [캐스팅](types/cast.md)
-    - [리터럴 <sup>Literals</sup>](types/literals.md)
+    - [리터럴](types/literals.md)
     - [추론](types/inference.md)
     - [별명](types/alias.md)
 
-- [변환<sup>Conversion</sup>](conversion.md)
+- [변환>](conversion.md)
     - [`From` 과 `Into`](conversion/from_into.md)
     - [`TryFrom` 과 `TryInto`](conversion/try_from_try_into.md)
     - [To 와 from `String`](conversion/string.md)
 
-- [표현식<sup>Expressions</sup>](expression.md)
+- [표현식](expression.md)
 
 - [제어 흐름](flow_control.md)
     - [if/else](flow_control/if_else.md)
