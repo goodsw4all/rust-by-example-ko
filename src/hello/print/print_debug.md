@@ -1,57 +1,57 @@
 # Debug
 
-All types which want to use `std::fmt` formatting `traits` require an
-implementation to be printable. Automatic implementations are only provided
-for types such as in the `std` library. All others *must* be manually
-implemented somehow.
+`std::fmt` 모둘의 서식화하는 `traits` 를 사용하기 위해서는 프린트할 수 있는 구현이 필요하다.
+`std` 라이브러리에 있는 자료형에 대해서만 `traits`를 자동구현 합니다. 다른 모든 자료형들은 *꼭*   
+직접 구현해야 합니다.
 
-The `fmt::Debug` `trait` makes this very straightforward. *All* types can
-`derive` (automatically create) the `fmt::Debug` implementation. This is
-not true for `fmt::Display` which must be manually implemented.
+`fmt::Debug` `trait`는 매우 직관적이다.  *모든* 자료형은 `fmt::Debug` 의 구현을   
+`상속`<sup>derive</sup> (자동 생성) 받을 수 있습니다.   
+`fmt::Display` 은 해당되지 않고, 직접 구현해야 합니다.
+
 
 ```rust
-// This structure cannot be printed either with `fmt::Display` or
-// with `fmt::Debug`.
+// 다음 구조체는 `fmt::Display` 이나 with `fmt::Debug` 으로
+// 프린트 할 수 없습니다.
 struct UnPrintable(i32);
 
-// The `derive` attribute automatically creates the implementation
-// required to make this `struct` printable with `fmt::Debug`.
+// 아래처럼 `derive` 속성을 주면 `struct`를 `fmt::Debug`로 프린트할 수 있게 하는 구현을    
+// 자동으로 만들어 냅니다.
 #[derive(Debug)]
 struct DebugPrintable(i32);
 ```
 
-All `std` library types are automatically printable with `{:?}` too:
+`std` 라이브러리의 모든 타입은 자동으로 `{:?}`을 사용해 프린트할 수 있습니다.
 
 ```rust,editable
-// Derive the `fmt::Debug` implementation for `Structure`. `Structure`
-// is a structure which contains a single `i32`.
+// `Structure`에 `fmt::Debug` 구현을 상속받습니다. 
+// `Structure` 에는 하나의 `i32`를 가지고 있습니다.
 #[derive(Debug)]
 struct Structure(i32);
 
-// Put a `Structure` inside of the structure `Deep`. Make it printable
-// also.
+// `Deep` 구조체에 `Structure` 구조체를 넣습니다.
+// `derive`로 프린트 할 수 있게 만듭니다.
 #[derive(Debug)]
 struct Deep(Structure);
 
 fn main() {
-    // Printing with `{:?}` is similar to with `{}`.
+    // `{:?}`로 프린트하는 것은 `{}` 와 비슷합니다.
     println!("{:?} months in a year.", 12);
     println!("{1:?} {0:?} is the {actor:?} name.",
              "Slater",
              "Christian",
              actor="actor's");
 
-    // `Structure` is printable!
+    // `Structure` 구조체는 프린트 할 수 있습니다.
     println!("Now {:?} will print!", Structure(3));
     
-    // The problem with `derive` is there is no control over how
-    // the results look. What if I want this to just show a `7`?
+    // `derive` 속성의 문제는 결과가 어떻게 보일지 제어할 수 없다는 것 입니다.
+    // 단지 `7` 만 보이게 하고 싶다면요?
     println!("Now {:?} will print!", Deep(Structure(7)));
 }
 ```
 
-So `fmt::Debug` definitely makes this printable but sacrifices some
-elegance. Rust also provides "pretty printing" with `{:#?}`.
+`fmt::Debug` 트레이트는 프린트 할 수 있게 해주지만, 우아함을 좀 희생해야 합니다.   
+Rust 는 `{:#?}`을 사용해서 "pretty printing"을 제공합니다.
 
 ```rust,editable
 #[derive(Debug)]
@@ -70,9 +70,9 @@ fn main() {
 }
 ```
 
-One can manually implement `fmt::Display` to control the display.
+출력되는 것을 제어하고 싶다면 `fmt::Display`를 구현하면 됩니다.
 
-### See also:
+### 참고:
 
 [`attributes`][attributes], [`derive`][derive], [`std::fmt`][fmt],
 and [`struct`][structs]

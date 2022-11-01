@@ -76,7 +76,7 @@ fn main() {
 std 라이브러는 자료형에 대해 `fmt::Display` 트레이트를 제공하므로, 예제에서 사용할 수 있었습니다.   
 사용자 정의 자료형에 대해서는 몇가지 단계가 더 필요합니다.
 
-`fmt::Display`트레이트를 구현하면, [`String`][string] 타입으로 [`변환`][convert] 변환해주는   
+`fmt::Display`트레이트를 구현하면, [`String`][string] 타입으로 [`변환`][convert]해주는   
 [`ToString`]트레이트가 자동으로 구현됩니다.
 
 ### 실습
