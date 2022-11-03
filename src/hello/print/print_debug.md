@@ -1,13 +1,12 @@
 # Debug
 
-`std::fmt` 모둘의 서식화하는 `traits` 를 사용하기 위해서는 프린트할 수 있는 구현이 필요하다.
+`std::fmt` 모둘의 서식화하는 `traits` 를 사용하기 위해서는 프린트할 수 있게 해주는 구현이 필요합니다.
 `std` 라이브러리에 있는 자료형에 대해서만 `traits`를 자동구현 합니다. 다른 모든 자료형들은 *꼭*   
 직접 구현해야 합니다.
 
 `fmt::Debug` `trait`는 매우 직관적이다.  *모든* 자료형은 `fmt::Debug` 의 구현을   
 `상속`<sup>derive</sup> (자동 생성) 받을 수 있습니다.   
 `fmt::Display` 은 해당되지 않고, 직접 구현해야 합니다.
-
 
 ```rust
 // 다음 구조체는 `fmt::Display` 이나 with `fmt::Debug` 으로

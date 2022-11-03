@@ -1,75 +1,72 @@
 # Display
 
-`fmt::Debug` hardly looks compact and clean, so it is often advantageous to
-customize the output appearance. This is done by manually implementing
-[`fmt::Display`][fmt], which uses the `{}` print marker. Implementing it
-looks like this:
+`fmt::Debug` 트레이트는 컴팩트하지도 않고, 깔끔해 보이지도 않습니다. 그래서 보통 출력 형태를 사용자   
+정의로 변경하는 것이 좋습니다. 사용자 정의 변경하는 것은 [`fmt::Display`][fmt] 트레이트를   
+구현해야 하고, 그러고 나면 `{}` 마커를 사용할 수 있게 됩니다.  
+구현하는 방법은 아래처럼 하면 됩니다.
 
 ```rust
-// Import (via `use`) the `fmt` module to make it available.
+// `use` 키워드로 `fmt` 모듈을 사용할 수 있게 임포트 합니다.
 use std::fmt;
 
-// Define a structure for which `fmt::Display` will be implemented. This is
-// a tuple struct named `Structure` that contains an `i32`.
+// `fmt::Display` 를 구현할 구조체를 정의합니다. This is
+// `Structure` 는 튜플 구조체이고, `i32`값을 담을 수 있습니다.
 struct Structure(i32);
 
-// To use the `{}` marker, the trait `fmt::Display` must be implemented
-// manually for the type.
-impl fmt::Display for Structure {
-    // This trait requires `fmt` with this exact signature.
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        // Write strictly the first element into the supplied output
-        // stream: `f`. Returns `fmt::Result` which indicates whether the
-        // operation succeeded or failed. Note that `write!` uses syntax which
-        // is very similar to `println!`.
+// `{}` 마커를 사용하기 위해서는 `fmt::Display` 트레이트가 타입에 맞게 구현되어야 합니다.
+impl fmt::Display for Structure {    
+    //`fmt::Display` 트레이트는 아래처럼 `fmt` 함수의 정확한 시그니처를 요구합니다.
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {        
+        // 첫번째 요소를 제공된 출력 스트림 `f` 에 쓰기를 합니다. 
+        // `fmt::Result`을 리턴해서 성공인지 실패인지 알려줍니다.
+        // `write!` 는 `println!` 와 거의 비슷한 문법을 사용하는 것에 주목하세요.
         write!(f, "{}", self.0)
     }
 }
 ```
 
-`fmt::Display` may be cleaner than `fmt::Debug` but this presents
-a problem for the `std` library. How should ambiguous types be displayed?
-For example, if the `std` library implemented a single style for all
-`Vec<T>`, what style should it be? Would it be either of these two?
+`fmt::Display` 트레이트는 `fmt::Debug` 트레이트보다 깔끔할 수는 있지만
+`std` 라이브러리 대한 문제가 있습니다. 모호한 타입은 어떻게 보여져야 할까요?
+예컨대, `std` 라이브러리가 모든 `Vec<T>`에 대해 단 하나의 스타일만 구현한다면,
+어떤 스타일이 되어야 할까요? 다음 둘 중 하나가 될까요?
 
 * `Vec<path>`: `/:/etc:/home/username:/bin` (split on `:`)
 * `Vec<number>`: `1,2,3` (split on `,`)
 
-No, because there is no ideal style for all types and the `std` library
-doesn't presume to dictate one. `fmt::Display` is not implemented for `Vec<T>`
-or for any other generic containers. `fmt::Debug` must then be used for these
-generic cases.
+아닙니다. 모든 타입에 대해 이상적인 스타일은 없고, `std` 라이브러리는 어떤 하나의 스타일을 
+가정하지 않습니다. 
+`Vec<T>` 와 다른 제네릭 컨테이너들은 `fmt::Display`트레이트를 구현하지 않습니다.
+일반적인 경우에는 `fmt::Debug` 트레이트를 사용해야 합니다.
 
-This is not a problem though because for any new *container* type which is
-*not* generic,`fmt::Display` can be implemented.
+새로운 컨테이너가 제네릭이 아닌 경우에는 `fmt::Display`를 구현될 수 있어 문제가 되진 않습니다.
 
 ```rust,editable
-use std::fmt; // Import `fmt`
+use std::fmt; // 임포트 `fmt`
 
-// A structure holding two numbers. `Debug` will be derived so the results can
-// be contrasted with `Display`.
+// 다음 구조체는 두 개의 숫자를 가집니다. 
+// `Display` 트레이트와는 다르게 `Debug` 트레이트는 상속됩니다.
 #[derive(Debug)]
 struct MinMax(i64, i64);
 
-// Implement `Display` for `MinMax`.
+// `MinMax` 구조체에 대한 `Display` 트레이트 구현.
 impl fmt::Display for MinMax {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        // Use `self.number` to refer to each positional data point.
+        // 각 숫자를 참조하기 위해서는 `self.number`를 사용하세요.        
         write!(f, "({}, {})", self.0, self.1)
     }
 }
 
-// Define a structure where the fields are nameable for comparison.
+// 비교를 위해 이름이 있는 필드들이 있는 구조체를 정의합니다.
 #[derive(Debug)]
 struct Point2D {
     x: f64,
     y: f64,
 }
 
-// Similarly, implement `Display` for `Point2D`
+// 유사하게 `Point2D`구조체를 대한 `Display` 트레이트를 구현합니다.
 impl fmt::Display for Point2D {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        // Customize so only `x` and `y` are denoted.
+        // `x` 와 `y`만 표시되도록 정의합니다.
         write!(f, "x: {}, y: {}", self.x, self.y)
     }
 }
@@ -94,22 +91,20 @@ fn main() {
     println!("Display: {}", point);
     println!("Debug: {:?}", point);
 
-    // Error. Both `Debug` and `Display` were implemented, but `{:b}`
-    // requires `fmt::Binary` to be implemented. This will not work.
+    // `Debug`와 `Display`가 구현되었지만, `{:b}` 는 `fmt::Binary` 의 구현이 
+    // 필요하기 때문에 에러입니다. (주석을 제거하면) 동작하지 않을 것 입니다.
     // println!("What does Point2D look like in binary: {:b}?", point);
 }
 ```
 
-So, `fmt::Display` has been implemented but `fmt::Binary` has not, and
-therefore cannot be used. `std::fmt` has many such [`traits`][traits] and
-each requires its own implementation. This is detailed further in
-[`std::fmt`][fmt].
+`fmt::Display` 는 구현되었지만, `fmt::Binary` 가 구현되지 않아서 사용할 수 업습니다.
+`std::fmt` 에는 이런 [`트레이트`][traits]가 많이 있으며, 각각의 구현을 필요로 합니다.
+더 자세한 내용은 [`std::fmt`][fmt] 에 있습니다.
 
-### Activity
+### 활동
 
-After checking the output of the above example, use the `Point2D` struct as a
-guide to add a `Complex` struct to the example. When printed in the same
-way, the output should be:
+위의 예제의 출력 결과를 확인한 후에, `Point2D` 구조체를 가이드로 해서 `Complex` 구조체를 
+이 예제에 추가해 보세요. 같은 방법으로 출력된다면, 결과는 다음처럼 나와야 합니다.
 
 ```txt
 Display: 3.3 + 7.2i
