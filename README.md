@@ -1,11 +1,11 @@
 # Rust By Example 
 한글로 번역합니다.
 
-|목차|번역상태|
+|TOC|Status|
 |---------------------|----|
-|Introduction         |진행중|
-|1. Hello World       |완료|
-|2. Primitives        ||
+|Introduction         |in progress|
+|1. Hello World       |done|
+|2. Primitives        |done|
 |3. Custom Types      ||
 |4. Variable Bindings ||
 |5. Types             ||
