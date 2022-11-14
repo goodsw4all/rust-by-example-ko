@@ -23,11 +23,11 @@
         - [Testcase: linked-list](custom_types/enum/testcase_linked_list.md)
     - [constants](custom_types/constants.md)
 
-  - [변수 바인딩](variable_bindings.md)
-    - [가변성](variable_bindings/mut.md)
-    - [스코프와 쉐도잉](variable_bindings/scope.md)
-    - [선언 먼저 하기](variable_bindings/declare.md)
-    - [얼어붙음<sup>Freezing</sup>](variable_bindings/freeze.md)
+- [변수 바인딩](variable_bindings.md)
+  - [가변성](variable_bindings/mut.md)
+  - [스코프와 쉐도잉](variable_bindings/scope.md)
+  - [선언 먼저 하기](variable_bindings/declare.md)
+  - [얼어붙음<sup>Freezing</sup>](variable_bindings/freeze.md)
 
 - [타입](types.md)
     - [캐스팅](types/cast.md)
@@ -35,14 +35,14 @@
     - [추론](types/inference.md)
     - [별명](types/alias.md)
 
-- [변환>](conversion.md)
+- [변환](conversion.md)
     - [`From` 과 `Into`](conversion/from_into.md)
     - [`TryFrom` 과 `TryInto`](conversion/try_from_try_into.md)
     - [To 와 from `String`](conversion/string.md)
 
 - [표현식](expression.md)
 
-- [제어 흐름](flow_control.md)
+- [흐름 제어](flow_control.md)
     - [if/else](flow_control/if_else.md)
     - [loop](flow_control/loop.md)
         - [Nesting and labels](flow_control/loop/nested.md)
@@ -82,11 +82,11 @@
     - [`super` 와 `self`](mod/super.md)
     - [파일 계층구조](mod/split.md)
 
-- [크레이트<sup>crates</sup>](crates.md)
+- [크레이트 crates>](crates.md)
     - [Creating a Library](crates/lib.md)
     - [Using a Library](crates/using_lib.md)
 
-- [카고<sup>cargo</sup>](cargo.md)
+- [카고 cargo](cargo.md)
     - [Dependencies](cargo/deps.md)
     - [Conventions](cargo/conventions.md)
     - [Tests](cargo/test.md)
@@ -113,7 +113,7 @@
     - [Phantom type parameters](generics/phantom.md)
         - [Testcase: unit clarification](generics/phantom/testcase_units.md)
 
-- [Scoping rules](scope.md)
+- [범위 규칙](scope.md)
     - [RAII](scope/raii.md)
     - [Ownership and moves](scope/move.md)
         - [Mutability](scope/move/mut.md)
@@ -133,7 +133,7 @@
         - [Static](scope/lifetime/static_lifetime.md)
         - [Elision](scope/lifetime/elision.md)
 
-- [Traits](trait.md)
+- [트레이트](trait.md)
     - [Derive](trait/derive.md)
     - [Returning Traits with `dyn`](trait/dyn.md)
     - [Operator Overloading](trait/ops.md)
@@ -153,7 +153,7 @@
     - [DSL (Domain Specific Languages)](macros/dsl.md)
     - [Variadics](macros/variadics.md)
 
-- [Error handling](error.md)
+- [에러 처리](error.md)
     - [`panic`](error/panic.md)
     - [`abort` & `unwind`](error/abort_unwind.md)
     - [`Option` & `unwrap`](error/option_unwrap.md)

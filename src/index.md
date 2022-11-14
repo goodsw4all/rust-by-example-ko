@@ -10,51 +10,51 @@ Rust by Example (RBE) 는 Rust 의 다양한 개념과 표준 라이브러리를
 
 - [안녕 세상아<sup>Hello World</sup>](hello.md) - 전통적인 예제인 Hello World 프로그램부터 시작해봐요.
 
-- [원시 자료형 <sup>Primitives</sup>](primitives.md) - Learn about signed integers, unsigned integers and other primitives.
+- [원시 자료형 <sup>Primitives</sup>](primitives.md) - 부호있는 정수형와 없는 정수형와 그밖에 자료형들에 대해서 배웁니다.
 
-- [Custom Types](custom_types.md) - `struct` and `enum`.
+- [사용자 정의 자료형](custom_types.md) - `struct` and `enum`.
 
-- [Variable Bindings](variable_bindings.md) - mutable bindings, scope, shadowing.
+- [변수 바인딩](variable_bindings.md) - mutable bindings, scope, shadowing.
 
-- [Types](types.md) - Learn about changing and defining types.
+- [타입](types.md) - Learn about changing and defining types.
 
-- [Conversion](conversion.md)
+- [변환](conversion.md)
 
-- [Expressions](expression.md)
+- [표현식](expression.md)
 
-- [Flow of Control](flow_control.md) - `if`/`else`, `for`, and others.
+- [흐름 제어](flow_control.md) - `if`/`else`, `for`, and others.
 
-- [Functions](fn.md) - Learn about Methods, Closures and High Order Functions.
+- [함수](fn.md) - Learn about Methods, Closures and High Order Functions.
 
-- [Modules](mod.md) - Organize code using modules
+- [모듈](mod.md) - Organize code using modules
 
-- [Crates](crates.md) - A crate is a compilation unit in Rust. Learn to create a library.
+- [크레이트](crates.md) - A crate is a compilation unit in Rust. Learn to create a library.
 
-- [Cargo](cargo.md) - Go through some basic features of the official Rust package management tool.
+- [카고](cargo.md) - Go through some basic features of the official Rust package management tool.
 
-- [Attributes](attribute.md) - An attribute is metadata applied to some module, crate or item.
+- [속석](attribute.md) - An attribute is metadata applied to some module, crate or item.
 
-- [Generics](generics.md) - Learn about writing a function or data type which can work for multiple types of arguments.
+- [제네릭스](generics.md) - Learn about writing a function or data type which can work for multiple types of arguments.
 
-- [Scoping rules](scope.md) - Scopes play an important part in ownership, borrowing, and lifetimes.
+- [범위 규칙](scope.md) - Scopes play an important part in ownership, borrowing, and lifetimes.
 
-- [Traits](trait.md) - A trait is a collection of methods defined for an unknown type: `Self`
+- [트레이트](trait.md) - A trait is a collection of methods defined for an unknown type: `Self`
 
-- [Macros](macros.md)
+- [매크로](macros.md)
 
-- [Error handling](error.md) - Learn Rust way of handling failures.
+- [에러 처리](error.md) - Learn Rust way of handling failures.
 
-- [Std library types](std.md) - Learn about some custom types provided by `std` library.
+- [표준 라이브러리 타입](std.md) - Learn about some custom types provided by `std` library.
 
-- [Std misc](std_misc.md) - More custom types for file handling, threads.
+- [표준 라이브러리 기타](std_misc.md) - More custom types for file handling, threads.
 
-- [Testing](testing.md) - All sorts of testing in Rust.
+- [테스트](testing.md) - All sorts of testing in Rust.
 
-- [Unsafe Operations](unsafe.md)
+- [Unsafe 연산](unsafe.md)
 
-- [Compatibility](compatibility.md)
+- [호환성](compatibility.md)
 
-- [Meta](meta.md) - Documentation, Benchmarking.
+- [메타](meta.md) - Documentation, Benchmarking.
 
 
 [rust]: https://www.rust-lang.org/

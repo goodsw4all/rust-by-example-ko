@@ -6,7 +6,7 @@
 |Introduction         |in progress|
 |1. Hello World       |done|
 |2. Primitives        |done|
-|3. Custom Types      ||
+|3. Custom Types      |done|
 |4. Variable Bindings ||
 |5. Types             ||
 |6. Conversion        ||

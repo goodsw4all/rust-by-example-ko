@@ -1,35 +1,33 @@
-# Enums
+# 열거형 <sup>Enum</sup>
 
-The `enum` keyword allows the creation of a type which may be one of a few
-different variants. Any variant which is valid as a `struct` is also valid as
-an `enum`.
+`enum` 키워드는 여러 유형 중 한가지가 될 수 있는 자료형을 정의하게 해줍니다.
+`struct` 에서 유효한 것은  `enum` 에서도 유효합니다.
 
 ```rust,editable
-// Create an `enum` to classify a web event. Note how both
-// names and type information together specify the variant:
-// `PageLoad != PageUnload` and `KeyPress(char) != Paste(String)`.
-// Each is different and independent.
+// 웹 이벤트를 분류하는 `enum` 만듭니다.
+// 각 필드의 이름과 자료형 정보를 어떻게 명시하는 지 주의해서 보세요.
+// `PageLoad != PageUnload` 와 `KeyPress(char) != Paste(String)`는
+// 서로 다르고 독립적 입니다.
 enum WebEvent {
-    // An `enum` may either be `unit-like`,
+    // 유닛 스타일의 `enum`
     PageLoad,
     PageUnload,
-    // like tuple structs,
+    // 튜플 구조체 스타일,
     KeyPress(char),
     Paste(String),
-    // or c-like structures.
+    // C언어 구조체 스타일
     Click { x: i64, y: i64 },
 }
 
-// A function which takes a `WebEvent` enum as an argument and
-// returns nothing.
+// `WebEvent` enum 을 인수로 갖고 리턴값이 없는 함수
 fn inspect(event: WebEvent) {
     match event {
         WebEvent::PageLoad => println!("page loaded"),
-        WebEvent::PageUnload => println!("page unloaded"),
-        // Destructure `c` from inside the `enum`.
+        WebEvent::PageUnload => println!("page unloaded"),        
+        // `enum` 자료형 안에 있는 값을  `c`로 추출
         WebEvent::KeyPress(c) => println!("pressed '{}'.", c),
-        WebEvent::Paste(s) => println!("pasted \"{}\".", s),
-        // Destructure `Click` into `x` and `y`.
+        WebEvent::Paste(s) => println!("pasted \"{}\".", s),        
+        // `Click` 자료형의 필드들을 `x`와 `y` 로 추출
         WebEvent::Click { x, y } => {
             println!("clicked at x={}, y={}.", x, y);
         },
@@ -38,7 +36,7 @@ fn inspect(event: WebEvent) {
 
 fn main() {
     let pressed = WebEvent::KeyPress('x');
-    // `to_owned()` creates an owned `String` from a string slice.
+    // `to_owned()`함수는 슬라이스에서 소유권 있는 `String`을 생성합니다.
     let pasted  = WebEvent::Paste("my text".to_owned());
     let click   = WebEvent::Click { x: 20, y: 80 };
     let load    = WebEvent::PageLoad;
@@ -53,11 +51,10 @@ fn main() {
 
 ```
 
-## Type aliases
+## 자료형 별명 <sup>Type aliases</sup>
 
-If you use a type alias, you can refer to each enum variant via its alias.
-This might be useful if the enum's name is too long or too generic, and you
-want to rename it.
+자료형에 별명을 사용하면, 각 enum의 유형을 별명으로 참조할 수 있습니다.
+enum의 이름이 너무 길거나 너무 일반적이어서 이름을 다시 만들고 싶을 때 유용합니다.
 
 ```rust,editable
 enum VeryVerboseEnumOfThingsToDoWithNumbers {
@@ -65,17 +62,16 @@ enum VeryVerboseEnumOfThingsToDoWithNumbers {
     Subtract,
 }
 
-// Creates a type alias
+// 자료형 별명을 만듭니다.
 type Operations = VeryVerboseEnumOfThingsToDoWithNumbers;
 
-fn main() {
-    // We can refer to each variant via its alias, not its long and inconvenient
-    // name.
+fn main() {    
+    // 길고 불편한 이름이 아닌 별명으로 각 유형을 참조할 수 있습니다.
     let x = Operations::Add;
 }
 ```
 
-The most common place you'll see this is in `impl` blocks using the `Self` alias.
+자료형 별명이 가장 흔하게 사용되는 곳은 `impl` 코드 블록에서 사용하는 `Self` 별명입니다.
 
 ```rust,editable
 enum VeryVerboseEnumOfThingsToDoWithNumbers {
@@ -93,13 +89,12 @@ impl VeryVerboseEnumOfThingsToDoWithNumbers {
 }
 ```
 
-To learn more about enums and type aliases, you can read the
-[stabilization report][aliasreport] from when this feature was stabilized into
-Rust.
+enum과 자료형 별명에 대해서 더 알고 싶다면, 이 기능이 Rust에서 안정화 되었을 때의 [안정화 보고서][aliasreport]를 읽어 보실 수 있습니다. 
 
-### See also:
 
-[`match`][match], [`fn`][fn], and [`String`][str], ["Type alias enum variants" RFC][type_alias_rfc]
+### 참고:
+
+[`match`][match], [`fn`][fn], [`String`][str], ["Type alias enum variants" RFC][type_alias_rfc]
 
 [c_struct]: https://en.wikipedia.org/wiki/Struct_(C_programming_language)
 [match]: ../flow_control/match.md
