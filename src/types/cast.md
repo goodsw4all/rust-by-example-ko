@@ -1,11 +1,14 @@
-# Casting
+# 캐스팅<sup>Casting</sup>
 
 Rust provides no implicit type conversion (coercion) between primitive types.
 But, explicit type conversion (casting) can be performed using the `as` keyword.
-
+Rust 는 원시자료형 간의 암묵적 변환(강제 변환)을 제공하지 않습니다. 
+그러나, `as` 키워드를 이용하면 명시적 형 변환을 할 수 있습니다.
 Rules for converting between integral types follow C conventions generally,
 except in cases where C has undefined behavior. The behavior of all casts
 between integral types is well defined in Rust.
+정수타입의 자료형간의 변환 규칙은 일반적으로 C 언어에서의 규칙을 따릅니다. C에서 정의되지 않은 행위에 대한
+경우는 예외로 합니다. Rust에서 정수형 타입의 모든 변환은 잘 정의 되어 있습니다.
 
 ```rust,editable,ignore,mdbook-runnable
 // Suppress all warnings from casts which overflow.
@@ -14,11 +17,11 @@ between integral types is well defined in Rust.
 fn main() {
     let decimal = 65.4321_f32;
 
-    // Error! No implicit conversion
+    // 에러! 암묵적 형변환
     let integer: u8 = decimal;
-    // FIXME ^ Comment out this line
+    // FIXME ^ 위 라인을 주석처리하세요
 
-    // Explicit conversion
+    // 명시적 형변화
     let integer = decimal as u8;
     let character = integer as char;
 

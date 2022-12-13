@@ -29,7 +29,7 @@
   - [선언 먼저 하기](variable_bindings/declare.md)
   - [동결 Freezing](variable_bindings/freeze.md)
 
-- [타입](types.md)
+- [자료형](types.md)
     - [캐스팅](types/cast.md)
     - [리터럴](types/literals.md)
     - [추론](types/inference.md)
